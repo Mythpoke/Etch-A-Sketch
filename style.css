@@ -1,0 +1,30 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    height: 434px;
+    width: 434px;
+    
+    
+}
+
+.square {
+    border: 1px solid red;
+    height: 27px;
+    width: 27px;
+    
+}
