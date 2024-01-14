@@ -9,22 +9,47 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 }
 
-.container {
+.gridContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    flex: 1;  
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
     height: 434px;
-    width: 434px;
-    
-    
+    width: 434px;    
+    margin-bottom: 15em;
 }
 
 .square {
-    border: 1px solid red;
+    border: 1px solid black;
     height: 27px;
     width: 27px;
-    
+}
+
+.button1 {
+    padding: 20px 60px;
+    border-radius: 8px;
+    margin-left: 90px;
+}
+
+.button2 {
+    padding: 20px 40px;
+    border-radius: 8px;
 }
