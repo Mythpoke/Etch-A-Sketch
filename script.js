@@ -5,5 +5,9 @@ container.className = 'container';
 for(let i = 0; i < 256; i++) {
     const div = document.createElement('div');
     div.className = 'square';
-    container.appendChild(div);        
+    container.appendChild(div); 
+    div.addEventListener('mousemove', () => {
+        div.style.backgroundColor = 'blue';
+    });       
 }
+
