@@ -2,7 +2,7 @@ const gridContainer = document.createElement('div');
 const btnContainer = document.createElement('div');
 const grid = document.createElement('div');
 const changeSizeBtn = document.createElement('button');
-const restartBtn = document.createElement('button');
+const cleanBtn = document.createElement('button');
 const normalBtn = document.createElement('button');
 const rainbowBtn = document.createElement('button');
 let gridSize;
@@ -12,12 +12,12 @@ gridContainer.classList.add('gridContainer');
 btnContainer.classList.add('btnContainer');
 grid.classList.add('grid');
 changeSizeBtn.classList.add('changeSizeBtn');
-restartBtn.classList.add('restartBtn');
+cleanBtn.classList.add('cleanBtn');
 rainbowBtn.classList.add('rainbowBtn');
 normalBtn.classList.add('normalBtn');
 
 changeSizeBtn.textContent = "Change size";
-restartBtn.textContent = "Restart";
+cleanBtn.textContent = "Clean";
 rainbowBtn.textContent = "Rainbow Mode";
 normalBtn.textContent = "Normal Mode";
 
@@ -26,7 +26,7 @@ document.body.appendChild(gridContainer);
 btnContainer.appendChild(changeSizeBtn);
 btnContainer.appendChild(normalBtn);
 btnContainer.appendChild(rainbowBtn);
-btnContainer.appendChild(restartBtn);
+btnContainer.appendChild(cleanBtn);
 gridContainer.appendChild(grid);
 
 function intial() {
@@ -40,7 +40,7 @@ function intial() {
     }
     getNormalMode()
     getRandomMode();
-    restart();
+    clean();
     changeGrid();
 }
 
@@ -76,8 +76,8 @@ function removeGrid() {
     });
 }
 
-function restart() {
-    restartBtn.addEventListener('click', () => {
+function clean() {
+    cleanBtn.addEventListener('click', () => {
         const squares = document.querySelectorAll('.square');
     squares.forEach(square => {
         square.style.backgroundColor = "white";
