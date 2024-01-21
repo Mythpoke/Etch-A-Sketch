@@ -1,31 +1,116 @@
 const gridContainer = document.createElement('div');
-const grid = document.createElement('div');
-const button1 = document.createElement('button');
 const btnContainer = document.createElement('div');
-const button2 = document.createElement('button');
-btnContainer.appendChild(button2);
-btnContainer.appendChild(button1);
-document.body.appendChild(btnContainer);
-gridContainer.appendChild(grid);
-document.body.appendChild(gridContainer);
-button1.className = 'button1';
-button2.className = 'button2';
-grid.className = 'grid';
-gridContainer.className = 'gridContainer';
-btnContainer.className = 'btnContainer';
-button1.textContent = "Reset";
-button2.textContent = "Change Size";
+const grid = document.createElement('div');
+const changeSizeBtn = document.createElement('button');
+const restartBtn = document.createElement('button');
+const normalBtn = document.createElement('button');
+const rainbowBtn = document.createElement('button');
+let gridSize;
+const gridWidth = 600;
 
-for(let i = 0; i < 256; i++) {
-    const div = document.createElement('div');
-    div.className = 'square';
-    grid.appendChild(div); 
-    div.addEventListener('mousemove', () => {
-        div.style.backgroundColor = 'blue';
-    });       
+gridContainer.classList.add('gridContainer');
+btnContainer.classList.add('btnContainer');
+grid.classList.add('grid');
+changeSizeBtn.classList.add('changeSizeBtn');
+restartBtn.classList.add('restartBtn');
+rainbowBtn.classList.add('rainbowBtn');
+normalBtn.classList.add('normalBtn');
+
+changeSizeBtn.textContent = "Change size";
+restartBtn.textContent = "Restart";
+rainbowBtn.textContent = "Rainbow Mode";
+normalBtn.textContent = "Normal Mode";
+
+document.body.appendChild(btnContainer);
+document.body.appendChild(gridContainer);
+btnContainer.appendChild(changeSizeBtn);
+btnContainer.appendChild(normalBtn);
+btnContainer.appendChild(rainbowBtn);
+btnContainer.appendChild(restartBtn);
+gridContainer.appendChild(grid);
+
+function intial() {
+    for (let i = 0; 256 > i; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        grid.appendChild(square);
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = "black";
+        });
+    }
+    getNormalMode()
+    getRandomMode();
+    restart();
+    changeGrid();
 }
 
-button2.addEventListener('click', () => {
-    button2 = prompt("Enter a number");
-})
+function changeGrid() {
+    changeSizeBtn.addEventListener('click', () => {
+        gridSize = prompt("Enter a number less than or equal to 100.");
+        while(gridSize > 100) {
+        gridSize = prompt("Enter a number less than or equal to 100.");
+    }
+        removeGrid()
+        makeSquares()
+    });
+}
+
+function makeSquares() {
+    for (let i = 0; gridSize * gridSize > i; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        grid.appendChild(square);
+        square.style.width = gridWidth / gridSize + "px";
+        square.style.height = gridWidth / gridSize + "px";
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = "black";
+        });
+    }
+    
+}
+
+function removeGrid() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        grid.removeChild(square);
+    });
+}
+
+function restart() {
+    restartBtn.addEventListener('click', () => {
+        const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        square.style.backgroundColor = "white";
+    });
+    });
+}
+
+function getRandomColor() {
+    return 'rgb(' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ')';
+}
+
+function getRandomMode() {
+    rainbowBtn.addEventListener('click', () => {
+        const squares = document.querySelectorAll('.square');
+      squares.forEach(square => {
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = getRandomColor();
+        });
+      });
+        
+    });
+}
+
+function getNormalMode() {
+    normalBtn.addEventListener('click', () => {
+        const squares = document.querySelectorAll('.square');
+      squares.forEach(square => {
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = "black";
+        });
+      });
+        
+    });
+}
+intial();
 
