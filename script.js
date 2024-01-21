@@ -52,7 +52,7 @@ function changeGrid() {
     }
         removeGrid()
         makeSquares()
-    });
+  });
 }
 
 function makeSquares() {
@@ -82,11 +82,7 @@ function clean() {
     squares.forEach(square => {
         square.style.backgroundColor = "white";
     });
-    });
-}
-
-function getRandomColor() {
-    return 'rgb(' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ')';
+  });   
 }
 
 function getRandomMode() {
@@ -94,10 +90,9 @@ function getRandomMode() {
         const squares = document.querySelectorAll('.square');
       squares.forEach(square => {
         square.addEventListener('mouseenter', () => {
-            square.style.backgroundColor = getRandomColor();
+            square.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ', ' + Math.floor(Math.random() * 255) + ')';
         });
-      });
-        
+      });   
     });
 }
 
@@ -109,7 +104,6 @@ function getNormalMode() {
             square.style.backgroundColor = "black";
         });
       });
-        
     });
 }
 intial();
